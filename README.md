@@ -36,30 +36,46 @@
 `lsblk`
 
 
-#tool for formating disk
-cgdisk /dev/sda 
-new > (for first sector press enter) > size in sectors = +1G > hex code = ef00 > name = boot
-new > (for first sector press enter) > size in sectors = +2G > hex code = 8200 > name = swap
-new > (for first sector press enter) > size in sectors (press enter for rest of disk) > hex code = 8300 > name = arch
-WRITE > yes > quit
+**tool for formating disk**
 
-#fortmat partitions 
-mkfs.fat -F32 /dev/sda1
-mkswap /dev/sda2
-mkfs.ext4 /dev/sda3
+`cgdisk /dev/sda `
 
-#mount root partitions
-mount /dev/sda3 /mnt
-swapon /dev/sda2
-#create boot partition
-mkdir -p /mnt/boot
-mount /dev/sda1 /mnt/boot
+**new > (for first sector press enter) > size in sectors = +1G > hex code = ef00 > name = boot**
+**new > (for first sector press enter) > size in sectors = +2G > hex code = 8200 > name = swap**
+**new > (for first sector press enter) > size in sectors (press enter for rest of disk) > hex code = 8300 > name = arch**
+**WRITE > yes > quit**
 
-#install packages
-pacstrap /mnt base linux linux-firmware base-devel nano networkmanager
+**fortmat partitions**
 
-#generate fstab
-genfstab -U /mnt >> /mnt/etc/fstab
+
+`mkfs.fat -F32 /dev/sda1`
+`mkswap /dev/sda2`
+`mkfs.ext4 /dev/sda3`
+
+
+**mount root partitions**
+
+
+`mount /dev/sda3 /mnt`
+`swapon /dev/sda2`
+
+
+**create boot partition**
+
+
+`mkdir -p /mnt/boot`
+`mount /dev/sda1 /mnt/boot`
+
+
+**install packages**
+
+`pacstrap /mnt base linux linux-firmware base-devel nano networkmanager
+`
+
+
+**generate fstab**
+
+`genfstab -U /mnt >> /mnt/etc/fstab`
 
 #enter in the system 
 arch-chroot /mnt
