@@ -80,54 +80,76 @@
 
 `genfstab -U /mnt >> /mnt/etc/fstab`
 
-#enter in the system 
-arch-chroot /mnt
+**enter in the system **
 
-#setup timezone
-ln -sf /usr/share/zoneinfo/Europe/Sofia /etc/localtime
-hwclock --systohc
+`arch-chroot /mnt`
 
-#edit locale
-nano /etc/locale.gen
-#find where says en_US.UTF-8 UTF-8 and remove # sign (row 14 at begining)
-ctrl+x > y > enter
-locale-gen
-nano /etc/locale.conf   > LANG=en_US.UTF-8  >  ctrl+x > y > enter
 
-#create hostnamefile and name the machine
-nano /etc/hostname > (put some name for the machine) ctrl+x > y > enter
+**setup timezone**
 
-#add initframes
-mkinitcpio -P
 
-#set root password for installed machine
-passwd
+`ln -sf /usr/share/zoneinfo/Europe/Sofia /etc/localtime`
+`hwclock --systohc`
 
-#make normal user
-useradd -m NAME
-passwd NAME
-pacman -S sudo
-usermod -aG wheel,audio,video,optical,storage NAME
-EDITOR=nano visudo
-find where says "# %wheel ALL=(ALL) NOPASSWD: ALL" and remove # infront
+**edit locale**
 
-#install bootloader
-pacman -Sy grub efibootmgr
-grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
+`nano /etc/locale.gen`
 
-#mk grub config
-grub-mkconfig -o /boot/grub/grub.cfg
+**find where says en_US.UTF-8 UTF-8 and remove # sign (row 14 at begining)**
+
+`ctrl+x > y > enter`
+`locale-gen`
+`nano /etc/locale.conf   > LANG=en_US.UTF-8  >  ctrl+x > y > enter`
+
+**create hostnamefile and name the machine**
+
+`nano /etc/hostname > (put some name for the machine) ctrl+x > y > enter`
+
+**add initframes**
+
+`mkinitcpio -P`
+
+**set root password for installed machine**
+
+`passwd`
+
+**make normal user**
+
+`useradd -m NAME`
+
+`passwd NAME`
+
+`pacman -S sudo`
+
+`usermod -aG wheel,audio,video,optical,storage NAME`
+
+`EDITOR=nano visudo`
+
+**find where says "# %wheel ALL=(ALL) NOPASSWD: ALL" and remove # infront**
+
+**install bootloader**
+
+`pacman -Sy grub efibootmgr`
+
+`grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB`
+
+**mk grub config**
+
+`grub-mkconfig -o /boot/grub/grub.cfg`
 
 
 --------------------------------------------------
 
 
-pacman -Sy networkmanager xorg xorg-xinit lightdm lightdm-gtk-greeter fluxbox alacritty firefox git nitrogen picom xf86-video-fbdev
+`pacman -Sy networkmanager xorg xorg-xinit lightdm lightdm-gtk-greeter fluxbox alacritty firefox git nitrogen picom xf86-video-fbdev`
 
-nano /etc/lightdm/lightdm.conf [Seat:*]
-find greeter-session=lightdm-yourgreeter-greeter and uncoment it
-systemctl enable lightdm
-systemctl enable NetworkManager
+`nano /etc/lightdm/lightdm.conf [Seat:*]`
+
+**find greeter-session=lightdm-yourgreeter-greeter and uncoment it**
+
+`systemctl enable lightdm`
+
+`systemctl enable NetworkManager`
 
 
 REBOOT
