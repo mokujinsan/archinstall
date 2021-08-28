@@ -2,13 +2,13 @@
 Step by step how to install Arch
 
 #check machine ip and connect with ssh
-ip addr
+1. ip addr
 
 #change root password so you can connect with ssh
-passwd
+2. passwd
 
 #check if it's uefi boot mode
-ls /sys/firmware/efi/efivars
+3. ls /sys/firmware/efi/efivars
 #if there is a lot of files you are in uefi mode
 
 #check system clocl
