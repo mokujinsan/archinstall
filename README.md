@@ -1,5 +1,4 @@
-archinstall
-###Step by step how to install Arch###
+#Step by step how to install Arch
 
 ***check machine ip and connect with ssh***
 
