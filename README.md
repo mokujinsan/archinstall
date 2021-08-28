@@ -41,8 +41,11 @@
 `cgdisk /dev/sda `
 
 **new > (for first sector press enter) > size in sectors = +1G > hex code = ef00 > name = boot**
+
 **new > (for first sector press enter) > size in sectors = +2G > hex code = 8200 > name = swap**
+
 **new > (for first sector press enter) > size in sectors (press enter for rest of disk) > hex code = 8300 > name = arch**
+
 **WRITE > yes > quit**
 
 **fortmat partitions**
