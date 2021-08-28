@@ -1,4 +1,4 @@
-#Step by step how to install Arch
+# Step by step how to install Arch
 
 ***check machine ip and connect with ssh***
 
@@ -17,16 +17,25 @@
 ```ls /sys/firmware/efi/efivars```
 
 
-*if there is a lot of files you are in uefi mode*
+***if there is a lot of files you are in uefi mode***
 
-#check system clocl
-timedatectl status 
-#if it's incorrect 
-timedatectl set-ntp true
+***check system clocl***
 
-#boot partition for UEFI 
-#checking disk
-lsblk
+
+``timedatectl status``
+
+
+***if it's incorrect***
+
+
+```timedatectl set-ntp true```
+
+**boot partition for UEFI** 
+**checking disk**
+
+`lsblk`
+
+
 #tool for formating disk
 cgdisk /dev/sda 
 new > (for first sector press enter) > size in sectors = +1G > hex code = ef00 > name = boot
