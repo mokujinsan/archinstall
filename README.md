@@ -81,7 +81,10 @@ grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
 
 #mk grub config
 grub-mkconfig -o /boot/grub/grub.cfg
+
+
 --------------------------------------------------
+
 
 pacman -Sy networkmanager xorg xorg-xinit lightdm lightdm-gtk-greeter fluxbox alacritty firefox git nitrogen picom xf86-video-fbdev
 
